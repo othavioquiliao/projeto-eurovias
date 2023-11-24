@@ -5,7 +5,7 @@
 </script>
 
 <form class="container p-5">
-	<div class="flex flex-wrap justify-center h-1/2 gap-10">
+	<div class="flex justify-center h-1/2 gap-10">
 		<label class="label w-1/2 flex flex-col items-center">
 			<span class="h5 font-bold">Informaçoes do Solicitante</span>
 			<select class="select">
@@ -111,17 +111,17 @@
 		</label>
 	</div>
 	<div class=" flex space-y-2 justify-evenly px-5 w-full flex-wrap">
-		<label class="label flex items-center space-x-2 w-full">
+		<label class="label flex items-center space-x-2 1/3">
 			<p class="h5 font-bold">COM MÃO DE OBRA</p>
 			<input class="checkbox" type="checkbox" />
 		</label>
-		<label class=" label flex items-center space-x-2 w-full">
+		<label class=" label flex items-center space-x-2 1/3">
 			<p class="h5 font-bold">SEM MÃO DE OBRA</p>
 			<input class="checkbox" type="checkbox" />
 		</label>
-		<label class="label space-y-2 flex items-center gap-2 w-full">
-			<p class="h5 font-bold">Data da solicitaçao:</p>
-			<input class="input" title="Input (date)" type="date" />
+		<label class="label space-y-2 flex items-center w-1/3">
+			<p class="h5 font-bold w-1/2">Data da solicitaçao:</p>
+			<input class="input w-[40%]" title="Input (date)" type="date" />
 		</label>
 	</div>
 </form>
