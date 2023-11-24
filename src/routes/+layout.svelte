@@ -50,27 +50,27 @@
 	<svelte:fragment slot="sidebarLeft">
 		<aside class="flex w-80 h-full border-r border-gray-500 border-opacity-20">
 			<div>
-				<AppRail width="overflow-y-auto bg-transparent w-20 ">
+				<AppRail width="overflow-y-auto bg-transparent w-16">
 					<AppRailTile bind:group={currentMenu} name="solicitacoes" value={1} title="solicitacoes">
 						<svelte:fragment slot="lead">
-							<span class=" flex flex-col items-center text-sm gap-1">
-								<FileSearch size={30} />Serviçoes
+							<span class=" flex flex-col items-center text-xs gap-1 font-medium">
+								<FileSearch size={25} />Serviçoes
 							</span>
 						</svelte:fragment>
 					</AppRailTile>
 
 					<AppRailTile bind:group={currentMenu} name="estoque" value={2} title="contratos">
 						<svelte:fragment slot="lead">
-							<span class=" flex flex-col items-center text-sm gap-1">
-								<PackageSearch size={30} /> Contratos
+							<span class=" flex flex-col items-center text-xs gap-1 font-medium">
+								<PackageSearch size={25} /> Contratos
 							</span>
 						</svelte:fragment>
 					</AppRailTile>
 
 					<AppRailTile bind:group={currentMenu} name="estoque" value={3} title="estoque">
 						<svelte:fragment slot="lead">
-							<span class=" flex flex-col items-center text-sm gap-1">
-								<PackageSearch size={30} />Estoque
+							<span class=" flex flex-col items-center text-xs gap-1 font-medium">
+								<PackageSearch size={25} />Estoque
 							</span></svelte:fragment
 						>
 					</AppRailTile>

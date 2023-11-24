@@ -8,9 +8,9 @@ export const theme_eurovias: CustomThemeConfig = {
 		'--theme-font-family-heading': `Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji'`,
 		'--theme-font-color-base': '0 0 0',
 		'--theme-font-color-dark': '255 255 255',
-		'--theme-rounded-base': '6px',
+		'--theme-rounded-base': '8px',
 		'--theme-rounded-container': '2px',
-		'--theme-border-base': '1px',
+		'--theme-border-base': '0px',
 		// =~= Theme On-X Colors =~=
 		'--on-primary': '0 0 0',
 		'--on-secondary': '255 255 255',
@@ -20,28 +20,28 @@ export const theme_eurovias: CustomThemeConfig = {
 		'--on-error': '255 255 255',
 		'--on-surface': '255 255 255',
 		// =~= Theme Colors  =~=
-		// primary | #F6D32D
-		'--color-primary-50': '254 248 224', // #fef8e0
-		'--color-primary-100': '253 246 213', // #fdf6d5
-		'--color-primary-200': '253 244 203', // #fdf4cb
-		'--color-primary-300': '251 237 171', // #fbedab
-		'--color-primary-400': '249 224 108', // #f9e06c
-		'--color-primary-500': '246 211 45', // #F6D32D
-		'--color-primary-600': '221 190 41', // #ddbe29
-		'--color-primary-700': '185 158 34', // #b99e22
-		'--color-primary-800': '148 127 27', // #947f1b
-		'--color-primary-900': '121 103 22', // #796716
-		// secondary | #5e5c64
-		'--color-secondary-50': '231 231 232', // #e7e7e8
-		'--color-secondary-100': '223 222 224', // #dfdee0
-		'--color-secondary-200': '215 214 216', // #d7d6d8
-		'--color-secondary-300': '191 190 193', // #bfbec1
-		'--color-secondary-400': '142 141 147', // #8e8d93
-		'--color-secondary-500': '94 92 100', // #5e5c64
-		'--color-secondary-600': '85 83 90', // #55535a
-		'--color-secondary-700': '71 69 75', // #47454b
-		'--color-secondary-800': '56 55 60', // #38373c
-		'--color-secondary-900': '46 45 49', // #2e2d31
+		// primary | #ffbf00
+		'--color-primary-50': '255 245 217', // #fff5d9
+		'--color-primary-100': '255 242 204', // #fff2cc
+		'--color-primary-200': '255 239 191', // #ffefbf
+		'--color-primary-300': '255 229 153', // #ffe599
+		'--color-primary-400': '255 210 77', // #ffd24d
+		'--color-primary-500': '255 191 0', // #ffbf00
+		'--color-primary-600': '230 172 0', // #e6ac00
+		'--color-primary-700': '191 143 0', // #bf8f00
+		'--color-primary-800': '153 115 0', // #997300
+		'--color-primary-900': '125 94 0', // #7d5e00
+		// secondary | #484848
+		'--color-secondary-50': '228 228 228', // #e4e4e4
+		'--color-secondary-100': '218 218 218', // #dadada
+		'--color-secondary-200': '209 209 209', // #d1d1d1
+		'--color-secondary-300': '182 182 182', // #b6b6b6
+		'--color-secondary-400': '127 127 127', // #7f7f7f
+		'--color-secondary-500': '72 72 72', // #484848
+		'--color-secondary-600': '65 65 65', // #414141
+		'--color-secondary-700': '54 54 54', // #363636
+		'--color-secondary-800': '43 43 43', // #2b2b2b
+		'--color-secondary-900': '35 35 35', // #232323
 		// tertiary | #242424
 		'--color-tertiary-50': '222 222 222', // #dedede
 		'--color-tertiary-100': '211 211 211', // #d3d3d3
@@ -75,27 +75,27 @@ export const theme_eurovias: CustomThemeConfig = {
 		'--color-warning-700': '149 53 0', // #953500
 		'--color-warning-800': '119 42 0', // #772a00
 		'--color-warning-900': '97 34 0', // #612200
-		// error | #a51d2d
-		'--color-error-50': '242 221 224', // #f2dde0
-		'--color-error-100': '237 210 213', // #edd2d5
-		'--color-error-200': '233 199 203', // #e9c7cb
-		'--color-error-300': '219 165 171', // #dba5ab
-		'--color-error-400': '192 97 108', // #c0616c
-		'--color-error-500': '165 29 45', // #a51d2d
-		'--color-error-600': '149 26 41', // #951a29
-		'--color-error-700': '124 22 34', // #7c1622
-		'--color-error-800': '99 17 27', // #63111b
-		'--color-error-900': '81 14 22', // #510e16
-		// surface | #484848
-		'--color-surface-50': '228 228 228', // #e4e4e4
-		'--color-surface-100': '218 218 218', // #dadada
-		'--color-surface-200': '209 209 209', // #d1d1d1
-		'--color-surface-300': '182 182 182', // #b6b6b6
-		'--color-surface-400': '127 127 127', // #7f7f7f
-		'--color-surface-500': '72 72 72', // #484848
-		'--color-surface-600': '65 65 65', // #414141
-		'--color-surface-700': '54 54 54', // #363636
-		'--color-surface-800': '43 43 43', // #2b2b2b
-		'--color-surface-900': '35 35 35' // #232323
+		// error | #800000
+		'--color-error-50': '236 217 217', // #ecd9d9
+		'--color-error-100': '230 204 204', // #e6cccc
+		'--color-error-200': '223 191 191', // #dfbfbf
+		'--color-error-300': '204 153 153', // #cc9999
+		'--color-error-400': '166 77 77', // #a64d4d
+		'--color-error-500': '128 0 0', // #800000
+		'--color-error-600': '115 0 0', // #730000
+		'--color-error-700': '96 0 0', // #600000
+		'--color-error-800': '77 0 0', // #4d0000
+		'--color-error-900': '63 0 0', // #3f0000
+		// surface | #363636
+		'--color-surface-50': '225 225 225', // #e1e1e1
+		'--color-surface-100': '215 215 215', // #d7d7d7
+		'--color-surface-200': '205 205 205', // #cdcdcd
+		'--color-surface-300': '175 175 175', // #afafaf
+		'--color-surface-400': '114 114 114', // #727272
+		'--color-surface-500': '54 54 54', // #363636
+		'--color-surface-600': '49 49 49', // #313131
+		'--color-surface-700': '41 41 41', // #292929
+		'--color-surface-800': '32 32 32', // #202020
+		'--color-surface-900': '26 26 26' // #1a1a1a
 	}
 };

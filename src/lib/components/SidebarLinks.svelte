@@ -3,19 +3,7 @@
 	import { computePosition, autoUpdate, flip, shift, offset, arrow } from '@floating-ui/dom';
 	import { storePopup } from '@skeletonlabs/skeleton';
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
-	import {
-		Laptop,
-		Smartphone,
-		UserPlus,
-		FileX2,
-		FileStack,
-		FileBox,
-		UserX,
-		FilePlus2,
-		Users,
-		Wrench,
-		Store
-	} from 'lucide-svelte';
+	import { Smartphone, FileX2, FileStack, FileBox, FilePlus2, Wrench, Store } from 'lucide-svelte';
 	import { page } from '$app/stores';
 
 	export let currentMenu: number;
