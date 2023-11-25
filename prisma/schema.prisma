@@ -10,30 +10,58 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// Arquivo: schema.prisma
 
+// Definição do schema do Prisma
 
-model Post {
+// Modelo para a tabela 'cargos'
+model Cargo {
   id        Int      @id @default(autoincrement())
+  nome      String
+  descricao String
+  pessoas   Pessoa[]
+}
+
+// Modelo para a tabela 'empresa'
+model Empresa {
+  id                 Int      @id @default(autoincrement())
+  nome_fantasia      String
+  cnpj               BigInt
+  endereco           String?
+  nome_representante String?
+  nome_comercial     String?
+  telefone_comercial BigInt?
+  pessoas            Pessoa[]
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+// Modelo para a tabela 'email'
+model Email {
+  id        Int      @id @default(autoincrement())
+  email     String
+  senha     String
+  pessoas   Pessoa[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  title     String   @db.VarChar(255)
-  content   String?
-  published Boolean  @default(false)
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
 }
 
-model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int     @unique
-}
+// Modelo para a tabela 'pessoa'
+model Pessoa {
+  id            Int      @id @default(autoincrement())
+  nome_completo String
+  empresa_id    Int
+  email_id      Int
+  cargos_id     Int
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 
-model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-  posts   Post[]
-  profile Profile?
+  // Relacionamento com a tabela 'empresa'
+  empresa Empresa @relation(fields: [empresa_id], references: [id])
+
+  // Relacionamento com a tabela 'email'
+  email Email @relation(fields: [email_id], references: [id])
+
+  // Relacionamento com a tabela 'cargos'
+  cargo Cargo @relation(fields: [cargos_id], references: [id])
 }
