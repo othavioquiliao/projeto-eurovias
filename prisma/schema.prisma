@@ -10,9 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Arquivo: schema.prisma
-
-// Definição do schema do Prisma
 
 // Modelo para a tabela 'cargos'
 model Cargo {
