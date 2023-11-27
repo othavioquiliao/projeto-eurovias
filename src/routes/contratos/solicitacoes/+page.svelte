@@ -41,8 +41,8 @@
 		</label>
 
 		<span class="border border-opacity-30 border-surface-500 h-full" />
-		<label class="label w-1/2 flex flex-col items-center">
-			<span class="h5 font-bold">Informações do empreiteiro/ prestador/ locador</span>
+		<label class="label w-1/2 flex flex-col">
+			<span class="h5 font-bold text-center">Informações do empreiteiro/ prestador/ locador</span>
 			<select class="select" bind:value={empresaSelecionada}>
 				<option hidden>Selecione uma empresa</option>
 				{#each empresa as empresa}
@@ -63,14 +63,14 @@
 					<span>CNPJ: {empresaSelecionada[1]}</span>
 					<span>Endereço: {empresaSelecionada[2]}</span>
 				</div>
-				<hr class="!border-t-8 !border-double" />
+				<hr />
 				<span class="h5 font-bold">Representante</span>
 				<div class="flex flex-col w-full">
 					<span>Nome respresentante: {empresaSelecionada[3]}</span>
 					<span>E-mail representante: FALTA</span>
 					<span>Telefone representante: FALTA</span>
 				</div>
-				<hr class="!border-t-8 !-double" />
+				<hr />
 				<span class="h5 font-bold">Comercial</span>
 				<div class="flex flex-col w-full">
 					<span>Nome Comercial: {empresaSelecionada[4]}</span>
