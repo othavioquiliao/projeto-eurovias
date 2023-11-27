@@ -10,7 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 // Modelo para a tabela 'cargos'
 model Cargo {
   id        Int      @id @default(autoincrement())
@@ -21,16 +20,17 @@ model Cargo {
 
 // Modelo para a tabela 'empresa'
 model Empresa {
-  id                 Int      @id @default(autoincrement())
-  nome_fantasia      String
-  cnpj               BigInt
-  endereco           String?
-  nome_representante String?
-  nome_comercial     String?
-  telefone_comercial BigInt?
-  pessoas            Pessoa[]
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  id                   Int                    @id @default(autoincrement())
+  nome_fantasia        String
+  cnpj                 String
+  endereco             String?
+  nome_representante   String?
+  nome_comercial       String?
+  telefone_comercial   String?
+  pessoas              Pessoa[]
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @updatedAt
+  solicitacao_contrato solicitacao_contrato[]
 }
 
 // Modelo para a tabela 'email'
@@ -47,18 +47,44 @@ model Email {
 model Pessoa {
   id            Int      @id @default(autoincrement())
   nome_completo String
-  empresa_id    Int
-  email_id      Int
+  id_empresa    Int
+  id_email      Int
   cargos_id     Int
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
+  empresa Empresa @relation(fields: [id_empresa], references: [id])
+
+  email Email @relation(fields: [id_email], references: [id])
+
+  cargo                Cargo                  @relation(fields: [cargos_id], references: [id])
+  solicitacao_contrato solicitacao_contrato[]
+}
+
+// Modelo para a tabela 'solicitacao_contrato'
+model solicitacao_contrato {
+  id                              Int      @id @default(autoincrement())
+  id_pessoa_solicitante           Int
+  id_empresa                      Int
+  previsao_inicio_contrato        DateTime
+  prazo_contrato                  String
+  retencoes_contratuais           Boolean
+  seguro_garantido                Boolean
+  contrato_objeto                 String
+  contrato_obrigacoes_contratante String
+  contrato_obrigacoes_contratada  String
+  com_mao_obra                    Boolean
+  sem_mao_obra                    Boolean
+  data_da_solicitacao             DateTime
+  data_da_aprovacao               DateTime
+  data_da_reprovacao              DateTime
+  status                          String
+  createdAt                       DateTime @default(now())
+  updatedAt                       DateTime @updatedAt
+
   // Relacionamento com a tabela 'empresa'
-  empresa Empresa @relation(fields: [empresa_id], references: [id])
+  empresa Empresa @relation(fields: [id_empresa], references: [id])
 
-  // Relacionamento com a tabela 'email'
-  email Email @relation(fields: [email_id], references: [id])
-
-  // Relacionamento com a tabela 'cargos'
-  cargo Cargo @relation(fields: [cargos_id], references: [id])
+  // Relacionamento com a tabela 'pessoa'
+  pessoa Pessoa @relation(fields: [id_pessoa_solicitante], references: [id])
 }
