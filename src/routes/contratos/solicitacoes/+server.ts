@@ -5,7 +5,9 @@ const prisma = new PrismaClient();
 export const GET: RequestHandler = async () => {
 	const pessoa = await prisma.pessoa.findMany({
 		include: {
-			empresa: true
+			empresa: true,
+			cargo: true,
+			email: true
 		}
 	});
 	const empresa = await prisma.empresa.findMany();

@@ -10,22 +10,35 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Modelo para a tabela 'cargos'
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  usuario  String   @unique
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  pessoas  Pessoa[]
+}
+
+
 model Cargo {
   id        Int      @id @default(autoincrement())
   nome      String
+  setor     String
   descricao String
   pessoas   Pessoa[]
 }
 
-// Modelo para a tabela 'empresa'
 model Empresa {
   id                   Int                    @id @default(autoincrement())
   nome_fantasia        String
   cnpj                 String
   endereco             String?
   nome_representante   String?
+  email_representante  String?
+  telefone_representante String?
   nome_comercial       String?
+  email_comercial      String?
   telefone_comercial   String?
   pessoas              Pessoa[]
   createdAt            DateTime               @default(now())
@@ -33,35 +46,26 @@ model Empresa {
   solicitacao_contrato solicitacao_contrato[]
 }
 
-// Modelo para a tabela 'email'
-model Email {
-  id        Int      @id @default(autoincrement())
-  email     String
-  senha     String
-  pessoas   Pessoa[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
 
-// Modelo para a tabela 'pessoa'
+
 model Pessoa {
   id            Int      @id @default(autoincrement())
   nome_completo String
-  id_empresa    Int
   id_email      Int
   cargos_id     Int
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
   empresa Empresa @relation(fields: [id_empresa], references: [id])
-
-  email Email @relation(fields: [id_email], references: [id])
+  id_empresa    Int
 
   cargo                Cargo                  @relation(fields: [cargos_id], references: [id])
   solicitacao_contrato solicitacao_contrato[]
+
+  usuario Usuario? @relation(fields: [id_usuario], references: [id])
+  id_usuario Int?
 }
 
-// Modelo para a tabela 'solicitacao_contrato'
 model solicitacao_contrato {
   id                              Int      @id @default(autoincrement())
   id_pessoa_solicitante           Int
