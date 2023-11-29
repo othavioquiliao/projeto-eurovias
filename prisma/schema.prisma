@@ -12,14 +12,13 @@ datasource db {
 
 model Usuario {
   id        Int      @id @default(autoincrement())
-  usuario  String   @unique
+  usuario   String   @unique
   email     String   @unique
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  pessoas  Pessoa[]
+  pessoas   Pessoa[]
 }
-
 
 model Cargo {
   id        Int      @id @default(autoincrement())
@@ -30,40 +29,38 @@ model Cargo {
 }
 
 model Empresa {
-  id                   Int                    @id @default(autoincrement())
-  nome_fantasia        String
-  cnpj                 String
-  endereco             String?
-  nome_representante   String?
-  email_representante  String?
-  telefone_representante String?
-  nome_comercial       String?
-  email_comercial      String?
-  telefone_comercial   String?
-  pessoas              Pessoa[]
-  createdAt            DateTime               @default(now())
-  updatedAt            DateTime               @updatedAt
-  solicitacao_contrato solicitacao_contrato[]
+  id                     Int                    @id @default(autoincrement())
+  nome_fantasia          String
+  cnpj                   String
+  endereco               String
+  nome_representante     String
+  email_representante    String
+  telefone_representante String
+  nome_comercial         String
+  email_comercial        String
+  telefone_comercial     String
+  pessoas                Pessoa[]
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+  solicitacao_contrato   solicitacao_contrato[]
 }
 
-
-
 model Pessoa {
-  id            Int      @id @default(autoincrement())
+  id            Int    @id @default(autoincrement())
   nome_completo String
-  id_email      Int
-  cargos_id     Int
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
 
-  empresa Empresa @relation(fields: [id_empresa], references: [id])
-  id_empresa    Int
+  usuario    Usuario? @relation(fields: [id_usuario], references: [id])
+  id_usuario Int?
+
+  cargos_id Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  empresa    Empresa @relation(fields: [id_empresa], references: [id])
+  id_empresa Int
 
   cargo                Cargo                  @relation(fields: [cargos_id], references: [id])
   solicitacao_contrato solicitacao_contrato[]
-
-  usuario Usuario? @relation(fields: [id_usuario], references: [id])
-  id_usuario Int?
 }
 
 model solicitacao_contrato {
@@ -72,17 +69,17 @@ model solicitacao_contrato {
   id_empresa                      Int
   previsao_inicio_contrato        DateTime
   prazo_contrato                  String
+  prazo_contrato_periodo          String
   retencoes_contratuais           Boolean
   seguro_garantido                Boolean
   contrato_objeto                 String
   contrato_obrigacoes_contratante String
   contrato_obrigacoes_contratada  String
-  com_mao_obra                    Boolean
-  sem_mao_obra                    Boolean
+  mao_obra                        Boolean
   data_da_solicitacao             DateTime
   data_da_aprovacao               DateTime
   data_da_reprovacao              DateTime
-  status                          String
+  status                          String   @default("Pendente")
   createdAt                       DateTime @default(now())
   updatedAt                       DateTime @updatedAt
 

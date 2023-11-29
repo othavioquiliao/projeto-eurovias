@@ -6,6 +6,7 @@
 	let empresa: any = [];
 	onMount(async () => {
 		const response = await fetch('/contratos/solicitacoes');
+
 		if (response.ok) {
 			const data = await response.json();
 			pessoa = data.pessoa;
@@ -26,7 +27,15 @@
 			<select class="select" bind:value={pessoaSelecionada} name="solicitante">
 				<option value hidden>Selecione o solicitante</option>
 				{#each pessoa as pessoa}
-					<option value={[pessoa.nome_completo, pessoa.cargo.nome, pessoa.email.email]}>
+					<option
+						value={[
+							pessoa.nome_completo,
+							pessoa.cargo.nome,
+							pessoa.cargo.setor,
+							pessoa.usuario.email,
+							pessoa.id
+						]}
+					>
 						{pessoa.nome_completo}
 					</option>
 				{/each}
@@ -34,8 +43,8 @@
 			{#if pessoaSelecionada}
 				<div class="flex flex-col w-full pb-10 pt-2">
 					<span>Cargo/Funçao: {pessoaSelecionada[1]}</span>
-					<span>Setor: aqui vai o setor</span>
-					<span>Email: {pessoaSelecionada[2]}</span>
+					<span>Setor: {pessoaSelecionada[2]}</span>
+					<span>Email: {pessoaSelecionada[3]}</span>
 				</div>
 			{/if}
 			<div
@@ -81,8 +90,12 @@
 							empresa.cnpj,
 							empresa.endereco,
 							empresa.nome_representante,
+							empresa.email_representante,
+							empresa.telefone_representante,
 							empresa.nome_comercial,
-							empresa.telefone_comercial
+							empresa.email_comercial,
+							empresa.telefone_comercial,
+							empresa.id
 						]}
 					>
 						{empresa.nome_fantasia}
@@ -98,15 +111,15 @@
 				<p class="h5 font-bold">Representante</p>
 				<div class="flex flex-col w-full">
 					<p>Nome: {empresaSelecionada[3]}</p>
-					<p>E-mail: FALTA</p>
-					<p>Telefone: FALTA</p>
+					<p>E-mail: {empresaSelecionada[4]}</p>
+					<p>Telefone: {empresaSelecionada[5]}</p>
 				</div>
 				<hr />
 				<p class="h5 font-bold">Comercial</p>
 				<div class="flex flex-col w-full">
-					<p>Nome: {empresaSelecionada[4]}</p>
-					<p>E-mail: FALTA</p>
-					<p>Telefone: {empresaSelecionada[5]}</p>
+					<p>Nome: {empresaSelecionada[6]}</p>
+					<p>E-mail: {empresaSelecionada[7]}</p>
+					<p>Telefone: {empresaSelecionada[8]}</p>
 				</div>
 			{/if}
 		</label>
@@ -152,5 +165,9 @@
 			<input class="input w-[40%]" title="Input (date)" type="date" name="dataDaSolicitacao" />
 		</label>
 	</div>
-	<button type="submit" class="btn variant-filled-primary text-lg font-bold">Enviar email</button>
+	<div class="flex w-full justify-center space-x-10">
+		<button type="reset" class="btn variant-filled-primary text-lg font-bold">Limpar</button>
+
+		<button type="submit" class="btn variant-filled-primary text-lg font-bold">Enviar email</button>
+	</div>
 </form>
